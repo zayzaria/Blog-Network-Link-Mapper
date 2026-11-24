@@ -2,7 +2,7 @@
 
 A free, single-page tool for people who run more than one Blogger blog. Enter your blog addresses, and it maps how your blogs link to each other.
 
-**Try it:** https://YOUR-USERNAME.github.io/blog-link-mapper/
+**Try it:** https://zayzaria.github.io/Blog-Network-Link-Mapper/
 
 ## What it shows
 
