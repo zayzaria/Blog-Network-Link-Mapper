@@ -70,17 +70,22 @@
     <div class="grid">
       <div>
         <label for="blm-blogs">Your blogs <small>one per line</small></label>
-        <textarea id="blm-blogs" spellcheck="false"></textarea>
+        <textarea id="blm-blogs" spellcheck="false" placeholder="https://yourblog.blogspot.com/
+https://your-other-blog.blogspot.com/
+https://www.your-custom-domain.com/"></textarea>
       </div>
       <div>
         <label for="blm-profiles">My profiles <small>optional, one per line</small></label>
-        <textarea id="blm-profiles" spellcheck="false"></textarea>
+        <textarea id="blm-profiles" spellcheck="false" placeholder="https://www.youtube.com/@yourchannel
+https://x.com/yourname
+https://www.pinterest.com/yourname/"></textarea>
       </div>
     </div>
     <div class="row">
       <button id="blm-run" type="button">Map my links</button>
+      <button id="blm-example" type="button" class="ghost">Try an example</button>
       <button id="blm-copy" type="button" class="ghost" hidden>Copy report</button>
-      <span id="blm-status" role="status" aria-live="polite">The boxes are filled in with an example network. Replace them with your own.</span>
+      <span id="blm-status" role="status" aria-live="polite">Enter two or more of your own Blogger blogs, or try an example.</span>
     </div>
   </section>
   <section class="band" id="blm-out" hidden></section>
@@ -306,8 +311,11 @@ async function run(){
   out.scrollIntoView({behavior: (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'auto' : 'smooth', block: 'start'});
 }
 
-$('blm-blogs').value = EXAMPLE_BLOGS.join('\n');
-$('blm-profiles').value = EXAMPLE_PROFILES.join('\n');
+$('blm-example').addEventListener('click', () => {
+  $('blm-blogs').value = EXAMPLE_BLOGS.join('\n');
+  $('blm-profiles').value = EXAMPLE_PROFILES.join('\n');
+  $('blm-status').textContent = 'Example loaded: a real network of 8 blogs. Click Map my links.';
+});
 $('blm-run').addEventListener('click', run);
 $('blm-copy').addEventListener('click', async () => {
   try{ await navigator.clipboard.writeText(last); $('blm-status').textContent = 'Report copied.'; }
